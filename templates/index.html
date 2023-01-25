@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}
+    Home
+{% endblock title %}
+
+{% block body %}
+<div class="p-3 mb-2 bg-dark-subtle text-emphasis-dark mt-100" style="height: 110vh;">
+
+    <h1 class="display-3 text-center" style="margin-bottom: 60px;">Human Eye</h1>
+
+    <form action="/" method="POST" class="p-3 text-centre" enctype="multipart/form-data">
+        <input type="file" class="form-control" name="file" id="file">
+        <!-- <input type="submit" class="mt-3 btn btn-primary btn-dark text-center" name="Predict" > -->
+        <button type="submit" class="mt-3 btn btn-primary btn-dark text-center">Predict</button>
+    </form>
+    {% if no_file %}
+        <h2 class="text-centre">First Upload a file</h2>
+    {% endif %}
+
+    {% if wrong_format %}
+        <h2 class="text-centre">You have entered invalif format.Please upload from ['png','jpg','jpeg','gif','jfif']</h2>
+    {% endif %}
+    {% if result %}
+        <img src="{{image_path}}" alt="Uploaded Image"  height="250px" width="250px">
+        
+        <h2 class="text-center bg-info-subtle"><br>According To My Prediction, it's a <h1 class="text-center bg-info-subtle"> <i>{{result}}</i></h1></h2>
+    {% endif %}
+</div>
+{% endblock body %}
